@@ -6,6 +6,9 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
+# Use the tracked example as the Spring Boot configuration
+RUN cp src/main/resources/application.properties.example src/main/resources/application.properties
+
 RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:21-jre
